@@ -250,7 +250,7 @@ var title;
   function handleDetail(e){
         // console.log(e.target.innerText)
         modalMain.style.display = "block";
-        // cont = document.getElementsByClassName("cont")[0];
+        cont = document.getElementsByClassName("cont")[0];
         // console.log(cont);
         // title = document.createElement("h2");
         // cont.appendChild(title);
@@ -259,17 +259,46 @@ var title;
         for(var objKeys of userData){
             // console.log(userData)
             // console.log(objKeys)
+            var targettedElm = e.target.innerText;
+
             for(var objKey in objKeys){
-                console.log(objKey)
+                if(targettedElm === objKeys[objKey]){
+                    for(var objKey in objKeys){
+                        if(typeof  objKeys[objKey] === "object"){
+                            // console.log("test")
+                            
+                            var paraHead = document.createElement("h3");
+                            cont.appendChild(paraHead)
+                            paraHead.innerText = objKey
+                            var para = document.createElement("p");
+                         cont.appendChild(para)
+                            for(var key1 in objKeys[objKey]){
+                                var span = document.createElement("span");
+                                para.appendChild(span);
+                                span.innerText = objKeys[objKey][key1]
+                            }
+                        }
+                        else{
+
+                            var paraHead = document.createElement("h3");
+                            cont.appendChild(paraHead)
+                            paraHead.innerText = objKey
+
+                            var para = document.createElement("p");
+                         cont.appendChild(para)
+                         para.innerText = objKeys[objKey]
+                        }
+                    }
+                 
             }
         }
         
         
     }
-    
+}
     
     function handleClose(){
         modalMain.style.display = "none"
-        cont.removeChild(title);
+        // cont.removeChild(title);
 
   }
