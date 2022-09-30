@@ -275,7 +275,7 @@ var title;
                             for(var key1 in objKeys[objKey]){
                                 var span = document.createElement("span");
                                 para.appendChild(span);
-                                span.innerText = objKeys[objKey][key1]
+                                span.innerText = objKeys[objKey][key1] + ", " 
                             }
                         }
                         else{
@@ -300,5 +300,9 @@ var title;
     function handleClose(){
         modalMain.style.display = "none"
         // cont.removeChild(title);
-
+        const myNode = document.getElementsByClassName("cont")[0];
+        console.log(myNode)
+  while (myNode.firstChild) {
+    myNode.removeChild(myNode.lastChild);
+  }
   }
