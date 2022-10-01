@@ -273,9 +273,22 @@ var title;
                             var para = document.createElement("p");
                          cont.appendChild(para)
                             for(var key1 in objKeys[objKey]){
-                                var span = document.createElement("span");
+                                // console.log(typeof objKeys[objKey][key1] + "bilal")
+                                if(typeof objKeys[objKey][key1] === "object"){
+                                  for(var key2 in objKeys[objKey][key1]){
+                                    console.log("test123")
+                                    var span = document.createElement("span");
+                                    para.appendChild(span);
+                                    span.innerText = objKeys[objKey][key1][key2] + ", ";
+                                  }
+                                }
+                                else{
+                                  var span = document.createElement("span");
                                 para.appendChild(span);
-                                span.innerText = objKeys[objKey][key1] + ", " 
+                                  span.innerText = objKeys[objKey][key1] + ", " ;
+
+                                }
+
                             }
                         }
                         else{
